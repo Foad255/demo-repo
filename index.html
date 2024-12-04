@@ -31,7 +31,7 @@
   .moves {
     margin-bottom: 60px;
   }
-  .reset {
+  .reset, .auto {
     background-color: white;
     border: none;
     font-size: 15px;
@@ -63,6 +63,7 @@
     <p class="scorePrint">
     </p>
     <button class="reset" onclick="resetScore(); document.querySelector('.result').innerHTML =''; document.querySelector('.moves').innerHTML = '';">Reset Score</button>
+    <button class="auto"  onclick="Autoplay();" >Auto Play</button>
     
 
     <script>
@@ -72,6 +73,23 @@
         ties: 0
       };
       printScore();
+
+      let intervalId;
+      let Autoplaying = false;
+
+      function Autoplay() {
+        if (!Autoplaying) {
+         inervalId =  setInterval(function () {
+          const playerMove = pickComputerMove();
+          playGame(playerMove);
+        } , 1000);
+        Autoplaying = true;
+      } else {
+        clearInterval(inervalId);
+        Autoplaying = false;
+      }
+
+      }
 
       function playGame(playerMove) {
         const computerMove = pickComputerMove();
