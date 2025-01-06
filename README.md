@@ -1,5 +1,1 @@
-Hello from master2
-
-hello from master1
-
-Hello from main
+This is a rock paper scissors
